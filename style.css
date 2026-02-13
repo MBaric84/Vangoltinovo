@@ -1,0 +1,253 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --photo-shift: 150px;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #ffe0ea, #ffd2e1 40%, #ffc2d5);
+  color: #3a1d2f;
+  min-height: 100vh;
+}
+
+.photo-grid {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0;
+  z-index: 0;
+  transform: translateY(calc(-1 * var(--photo-shift)));
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.celebration {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 4;
+}
+
+.celebration.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.celebration-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 20px 50px rgba(58, 29, 47, 0.3);
+}
+
+.celebration-card video {
+  display: block;
+  max-width: min(520px, 80vw);
+  max-height: 70vh;
+  border-radius: 18px;
+  background: #000;
+}
+
+.celebration-text {
+  position: absolute;
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  font-weight: 800;
+  color: #d81b60;
+  letter-spacing: 1px;
+  text-shadow: 0 6px 14px rgba(58, 29, 47, 0.2);
+  text-align: center;
+  padding: 0;
+}
+
+.celebration-text-top {
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.celebration-text-bottom {
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.celebration-gifs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.celebration-gif {
+  position: absolute;
+  width: min(140px, 20vw);
+  height: min(140px, 20vw);
+  overflow: hidden;
+}
+
+.celebration-gif.top-left {
+  top: 16px;
+  left: 16px;
+}
+
+.celebration-gif.top-right {
+  top: 16px;
+  right: 16px;
+}
+
+.celebration-gif.bottom-left {
+  bottom: 16px;
+  left: 16px;
+}
+
+.celebration-gif.bottom-right {
+  bottom: 16px;
+  right: 16px;
+}
+
+.celebration-gifs .tenor-gif-embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+}
+
+.celebration-gifs iframe {
+  background: transparent !important;
+}
+
+.celebration-explosion {
+  position: absolute;
+  top: 50%;
+  width: min(220px, 35vw);
+  height: auto;
+  pointer-events: none;
+}
+
+.celebration-explosion-left {
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.celebration-explosion-right {
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  width: min(700px, 92vw);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  padding: 40px 32px;
+  box-shadow: 0 20px 50px rgba(58, 29, 47, 0.18);
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin: 0 0 12px;
+}
+
+.valentine-word {
+  position: relative;
+  color: #d81b60;
+  cursor: pointer;
+  text-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.valentine-word:hover {
+  color: #ad1457;
+  transform: translateY(-2px);
+}
+
+
+.subtitle {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #6d3b52;
+}
+
+.button-area {
+  position: relative;
+  width: min(420px, 80vw);
+  height: 130px;
+  margin: 28px auto 0;
+}
+
+.bubble {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  transform: translateY(0);
+  background: #fff0f5;
+  color: #6d3b52;
+  border-radius: 16px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 18px rgba(58, 29, 47, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.bubble.show {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.btn {
+  position: absolute;
+  min-width: 120px;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px rgba(58, 29, 47, 0.15);
+}
+
+.btn-yes {
+  left: 20px;
+  top: 25px;
+  background: #ff5f9e;
+  color: #fff;
+}
+
+.btn-yes:hover {
+  box-shadow: 0 12px 24px rgba(255, 95, 158, 0.35);
+}
+
+.btn-no {
+  left: 250px;
+  top: 25px;
+  background: #f3f3f3;
+  color: #6d3b52;
+}
