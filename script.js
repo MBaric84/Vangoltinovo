@@ -12,6 +12,10 @@ let audioUnlocked = false;
 let noMoveCount = 0;
 let celebrationTimer = null;
 
+const setValentineGlow = (isGlowing) => {
+  valentineWord.classList.toggle("glowing", isGlowing);
+};
+
 const bumpYes = () => {
   yesScale = Math.min(yesScale + 0.08, 1.7);
   yesBtn.style.transform = `scale(${yesScale})`;
@@ -67,6 +71,10 @@ valentineWord.addEventListener("click", () => {
     loveSong.pause();
   }
 });
+
+loveSong.addEventListener("play", () => setValentineGlow(true));
+loveSong.addEventListener("pause", () => setValentineGlow(false));
+loveSong.addEventListener("ended", () => setValentineGlow(false));
 
 document.addEventListener(
   "click",
