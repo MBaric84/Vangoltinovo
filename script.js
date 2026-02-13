@@ -61,8 +61,16 @@ const pauseSong = () => {
   loveSong.pause();
 };
 
-valentineWord.addEventListener("mouseenter", playSong);
-valentineWord.addEventListener("mouseleave", pauseSong);
+valentineWord.addEventListener("mouseenter", () => {
+  setValentineGlow(true);
+  playSong();
+});
+valentineWord.addEventListener("mouseleave", () => {
+  if (loveSong.paused) {
+    setValentineGlow(false);
+  }
+  pauseSong();
+});
 valentineWord.addEventListener("click", () => {
   if (!audioUnlocked) return;
   if (loveSong.paused) {
